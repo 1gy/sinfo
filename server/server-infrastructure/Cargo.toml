@@ -12,4 +12,7 @@ shaku = { workspace = true }
 async-trait = { workspace = true }
 thiserror = { workspace = true }
 anyhow = { workspace = true }
+once_cell = { workspace = true }
+
 raw-cpuid = "10.7.0"
+sysinfo = "0.28.3"

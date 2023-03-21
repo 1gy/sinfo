@@ -1,6 +1,7 @@
 pub mod console;
 pub mod cpu;
 pub mod error;
+pub mod sys;
 
 pub fn add(left: usize, right: usize) -> usize {
     left + right

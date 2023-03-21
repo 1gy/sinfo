@@ -1,7 +1,9 @@
 use std::{env, net::SocketAddr};
 
-use server_application::usecase::cpu::CpuUsecaseImpl;
-use server_infrastructure::accessor::{console::ConsoleAccessorImpl, cpu::CpuAccessorImpl};
+use server_application::usecase::{cpu::CpuUsecaseImpl, sys::SystemUsecaseImpl};
+use server_infrastructure::accessor::{
+    console::ConsoleAccessorImpl, cpu::CpuAccessorImpl, sys::SystemAccessorImpl,
+};
 use server_presentation::{start_server, AppModule};
 use shaku::module;
 
@@ -11,8 +13,10 @@ module! {
             // infrastructure
             CpuAccessorImpl,
             ConsoleAccessorImpl,
+            SystemAccessorImpl,
             // usecase
             CpuUsecaseImpl,
+            SystemUsecaseImpl,
        ],
         providers = []
     }

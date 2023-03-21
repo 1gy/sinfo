@@ -3,16 +3,18 @@ use serde::Serialize;
 
 use crate::AppState;
 
-use self::cpu::cpuinfo_router;
+use self::{cpu::cpuinfo_router, sys::sysinfo_router};
 
 pub mod cpu;
+pub mod sys;
 
 pub(crate) type AppRouter = Router<AppState>;
 
 pub(crate) fn create_router(state: AppState) -> Router {
     Router::new()
         .route("/", get(version))
-        .nest("/cpuinfo", cpuinfo_router())
+        .nest("/cpu", cpuinfo_router())
+        .nest("/sys", sysinfo_router())
         .with_state(state)
 }
 
