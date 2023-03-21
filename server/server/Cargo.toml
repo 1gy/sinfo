@@ -1,0 +1,16 @@
+[package]
+name = "server"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+server-infrastructure = { path = "../server-infrastructure" }
+server-presentation = { path = "../server-presentation" }
+server-application = { path = "../server-application" }
+server-domain = { path = "../server-domain" }
+
+shaku = { workspace = true }
+tokio = { workspace = true }
+dotenvy = { workspace = true }
