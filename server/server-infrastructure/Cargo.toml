@@ -10,3 +10,6 @@ server-domain = { path = "../server-domain" }
 
 shaku = { workspace = true }
 async-trait = { workspace = true }
+thiserror = { workspace = true }
+anyhow = { workspace = true }
+raw-cpuid = "10.7.0"

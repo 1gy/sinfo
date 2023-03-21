@@ -10,3 +10,5 @@ server-domain = { path = "../server-domain" }
 
 shaku = { workspace = true }
 async-trait = { workspace = true }
+thiserror = { workspace = true }
+anyhow = { workspace = true }

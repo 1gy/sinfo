@@ -1,7 +1,7 @@
 use std::{env, net::SocketAddr};
 
 use server_application::usecase::cpu::CpuUsecaseImpl;
-use server_infrastructure::accessor::{console::ConsoleAccessorImpl, cpu::CpuInfoAccessorImpl};
+use server_infrastructure::accessor::{console::ConsoleAccessorImpl, cpu::CpuAccessorImpl};
 use server_presentation::{start_server, AppModule};
 use shaku::module;
 
@@ -9,7 +9,7 @@ module! {
     pub AppModuleImpl: AppModule {
         components = [
             // infrastructure
-            CpuInfoAccessorImpl,
+            CpuAccessorImpl,
             ConsoleAccessorImpl,
             // usecase
             CpuUsecaseImpl,
