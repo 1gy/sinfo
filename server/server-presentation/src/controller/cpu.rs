@@ -1,7 +1,8 @@
-use axum::{extract::State, Json};
+use axum::{extract::State, routing::get, Json, Router};
 use serde::Serialize;
 use server_application::usecase::cpu::CpuUsecase;
 
+use super::AppRouter;
 use crate::AppState;
 
 #[derive(Serialize)]
@@ -36,9 +37,13 @@ impl Into<CpuInfo> for server_domain::cpu::CpuInfo {
     }
 }
 
-pub(crate) async fn cpu_info(State(state): State<AppState>) -> Json<CpuInfo> {
+async fn get_cpu_info(State(state): State<AppState>) -> Json<CpuInfo> {
     let module = state.module;
     let cpu_usecase: &dyn CpuUsecase = module.resolve_ref();
     let cpu_info = cpu_usecase.get_cpu_info().await.unwrap();
     Json(cpu_info.into())
+}
+
+pub(crate) fn cpuinfo_router() -> AppRouter {
+    Router::new().route("/", get(get_cpu_info))
 }

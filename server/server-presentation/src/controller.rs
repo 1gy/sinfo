@@ -1,15 +1,18 @@
 use axum::{routing::get, Json, Router};
 use serde::Serialize;
 
-use self::cpu::cpu_info;
 use crate::AppState;
 
+use self::cpu::cpuinfo_router;
+
 pub mod cpu;
+
+pub(crate) type AppRouter = Router<AppState>;
 
 pub(crate) fn create_router(state: AppState) -> Router {
     Router::new()
         .route("/", get(version))
-        .route("/cpuinfo", get(cpu_info))
+        .nest("/cpuinfo", cpuinfo_router())
         .with_state(state)
 }
 
