@@ -1,0 +1,18 @@
+[package]
+name = "server-infrastructure"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+server-domain = { path = "../server-domain" }
+
+shaku = { workspace = true }
+async-trait = { workspace = true }
+thiserror = { workspace = true }
+anyhow = { workspace = true }
+once_cell = { workspace = true }
+
+raw-cpuid = "10.7.0"
+sysinfo = "0.28.3"
